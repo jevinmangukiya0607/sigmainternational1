@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main pages -->
+  <url><loc>https://sigmainternational1.vercel.app/</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/about-sigma</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/vision-mission</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/leadership</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/awards-recognition</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/careers</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/academic-overview</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/curriculum</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/day-school</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/residential-school</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/asteria</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/life-skills</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/admissions-overview</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/admission-process</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/scholarships</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/download-brochure</loc></url>
+  <url><loc>https://sigmainternational1.vercel.app/apply-online</loc></url>
+
+  <!-- Blog -->
+  <url><loc>https://sigmainternational1.vercel.app/blogs</loc><lastmod>2026-09-24</lastmod></url>
+
+  <!-- Blog articles: add each new article here (newest first) -->
+  <url><loc>https://sigmainternational1.vercel.app/blogs/day-school-or-residential-school</loc><lastmod>2026-09-24</lastmod></url>
+  <url><loc>https://sigmainternational1.vercel.app/blogs/what-is-asteria</loc><lastmod>2026-09-18</lastmod></url>
+  <url><loc>https://sigmainternational1.vercel.app/blogs/preparing-your-child-for-boarding</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://sigmainternational1.vercel.app/blogs/cbse-school-admission-checklist</loc><lastmod>2026-09-02</lastmod></url>
+  <url><loc>https://sigmainternational1.vercel.app/blogs/questions-to-ask-on-a-school-visit</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://sigmainternational1.vercel.app/blogs/why-life-skills-matter</loc><lastmod>2026-08-18</lastmod></url>
+  <url><loc>https://sigmainternational1.vercel.app/blogs/sigma-horizon-residential-school-blog</loc><lastmod>2026-10-05</lastmod></url>
+  <!-- Add contact.html, campus.html, gallery.html etc. here once they are finished. -->
+
+</urlset>
