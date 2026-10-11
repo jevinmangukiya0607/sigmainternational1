@@ -23,7 +23,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Parenting",
         "date": "2026-09-29",
         "author": "SIGMA Admissions Team",
-        "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=85",
+        "image": "images/RES-01.webp",
         "tags": ["Residential School", "Boarding School", "Parenting", "Student Development"],
         "readTime": "8 min read"
     },
@@ -34,7 +34,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Parenting",
         "date": "2026-09-24",
         "author": "SIGMA Admissions Team",
-        "image": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=85",
+        "image": "images/STU-01.webp",
         "tags": [
             "Day School",
             "Residential School",
@@ -49,7 +49,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Academics",
         "date": "2026-09-18",
         "author": "SIGMA Academic Team",
-        "image": "https://sigmainternationalschool.com/wp-content/uploads/2023/03/lab-brochure-bellwether.jpg",
+        "image": "images/LAB-01.webp",
         "tags": [
             "ASTERIA",
             "CBSE",
@@ -64,7 +64,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Residential Life",
         "date": "2026-09-10",
         "author": "SIGMA Residential Team",
-        "image": "https://sigmainternationalschool.com/wp-content/uploads/2023/03/Activity-photose-1.jpg",
+        "image": "images/RES-02.webp",
         "tags": [
             "Residential School",
             "Wellbeing",
@@ -79,7 +79,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Admissions",
         "date": "2026-09-02",
         "author": "SIGMA Admissions Team",
-        "image": "https://sigmainternationalschool.com/wp-content/uploads/2024/02/about-2-1-Recovered.jpg",
+        "image": "images/PPL-05.webp",
         "tags": [
             "Admissions",
             "CBSE",
@@ -94,7 +94,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Admissions",
         "date": "2026-08-26",
         "author": "SIGMA Admissions Team",
-        "image": "https://sigmainternationalschool.com/wp-content/uploads/2023/03/Library-final-bellwether.jpg",
+        "image": "images/PPL-06.webp",
         "tags": [
             "Admissions",
             "Campus Visit",
@@ -109,7 +109,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Student Life",
         "date": "2026-08-18",
         "author": "SIGMA Academic Team",
-        "image": "https://sigmainternationalschool.com/wp-content/uploads/2023/03/Activity-photose_Page_5.jpg",
+        "image": "images/STU-05.webp",
         "tags": [
             "Life Skills",
             "Wellbeing",
