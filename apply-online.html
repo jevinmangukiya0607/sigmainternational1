@@ -2129,6 +2129,33 @@
                     showSuccess(data, false);
                     return;
                 }
+
+                // Leads sheet connected (SIGMA_SHEET_URL in script.js): send the application there.
+                if (window.sigmaSheetReady) {
+
+                    const sendLabel = submitBtn.firstChild.textContent;
+
+                    submitBtn.disabled = true;
+                    backBtn.disabled = true;
+                    submitBtn.firstChild.textContent = "Sending... ";
+
+                    try {
+                        await window.sigmaSendLead("Application", data);
+                        showSuccess(data, false);
+                    } catch (error) {
+                        // The sheet is unreachable: fall back to email so the application is not lost.
+                        console.error(error);
+                        sendByEmail(data);
+                        showSuccess(data, true);
+                    } finally {
+                        submitBtn.disabled = false;
+                        backBtn.disabled = false;
+                        submitBtn.firstChild.textContent = sendLabel;
+                    }
+
+                    return;
+
+                }
 
                 const endpoint = form.dataset.endpoint;
 

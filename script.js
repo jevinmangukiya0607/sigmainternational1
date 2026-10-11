@@ -852,89 +852,231 @@ if (motionAllowed) {
 
 
 /* =====================================================
-   FORM DEMO
-   Replace this with API / CRM connection later.
+   LEADS TO GOOGLE SHEET
+   Every form on the site sends its details to one Google
+   Apps Script Web app, which adds a row to the leads sheet.
+   Setup: see google-sheet/Code.gs.
+===================================================== */
+
+// EDIT: paste the Web app URL from Apps Script (Deploy > Manage deployments).
+const SIGMA_SHEET_URL = "https://script.google.com/macros/s/AKfycbx_ANGCTsF8NiFkxyCwB-gZ5KjvKDxqr963mcSVhkAlLqyBKuqZ1RxI6IvYvVQoQswn/exec";
+
+const SIGMA_PHONE = "+91 92279 91023";
+
+
+async function sigmaSendLead(formName, formData, extra) {
+
+    if (!SIGMA_SHEET_URL) {
+        throw new Error("SIGMA_SHEET_URL is not set in script.js");
+    }
+
+    const query = new URLSearchParams(window.location.search);
+
+    const payload = Object.assign(
+        {
+            form: formName,
+            page: window.location.pathname,
+            referrer: document.referrer,
+            utm_source: query.get("utm_source") || "",
+            utm_medium: query.get("utm_medium") || "",
+            utm_campaign: query.get("utm_campaign") || ""
+        },
+        Object.fromEntries(formData),
+        extra || {}
+    );
+
+    // text/plain keeps this a simple request, which Apps Script accepts from any site.
+    const response = await fetch(SIGMA_SHEET_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    if (!result.ok) {
+        throw new Error(result.error || "The sheet did not accept the entry");
+    }
+
+}
+
+window.sigmaSendLead = sigmaSendLead;
+window.sigmaSheetReady = Boolean(SIGMA_SHEET_URL);
+
+
+function sigmaFormError(form, anchor) {
+
+    let note = form.querySelector(".form-send-error");
+
+    if (!note) {
+
+        note = document.createElement("p");
+        note.className = "form-send-error";
+        note.setAttribute("role", "alert");
+        note.style.cssText = "margin:12px 0 0;color:#b3261e;font-size:14px;font-weight:600;";
+        anchor.insertAdjacentElement("afterend", note);
+
+    }
+
+    note.textContent = `Sorry, we could not send this. Please try again or call us on ${SIGMA_PHONE}.`;
+
+    return note;
+
+}
+
+
+/* =====================================================
+   ENQUIRY FORMS (popup and page bottom)
 ===================================================== */
 
 document
-    .querySelectorAll(
-        ".enquiry-form"
-    )
-    .forEach(
-        form => {
+    .querySelectorAll(".enquiry-form")
+    .forEach(form => {
 
+        form.addEventListener("submit", async event => {
 
-            form.addEventListener(
-                "submit",
-                event => {
+            event.preventDefault();
 
+            const submit = form.querySelector(".enquiry-submit");
 
-                    event
-                        .preventDefault();
+            if (!submit) {
+                return;
+            }
 
+            const original = submit.innerHTML;
+            const inPopup = Boolean(form.closest(".enquiry-modal"));
+            const oldError = form.querySelector(".form-send-error");
 
-                    const submit =
-                        form
-                            .querySelector(
-                                ".enquiry-submit"
-                            );
+            if (oldError) {
+                oldError.remove();
+            }
 
+            submit.disabled = true;
+            submit.innerHTML = "Sending...";
 
-                    if (!submit) {
-                        return;
-                    }
+            try {
 
+                await sigmaSendLead(
+                    "Enquiry",
+                    new FormData(form),
+                    { source: inPopup ? "Popup" : "Page form" }
+                );
 
-                    const original =
-                        submit
-                            .innerHTML;
+            } catch (error) {
 
+                console.error(error);
+                submit.disabled = false;
+                submit.innerHTML = original;
+                sigmaFormError(form, submit);
+                return;
 
-                    submit.disabled =
-                        true;
+            }
 
+            submit.innerHTML = "Thank you ✓";
 
-                    submit.innerHTML =
-                        "Thank you ✓";
+            setTimeout(() => {
 
+                form.reset();
+                submit.disabled = false;
+                submit.innerHTML = original;
 
-                    setTimeout(
-                        () => {
-
-
-                            form.reset();
-
-
-                            submit.disabled =
-                                false;
-
-
-                            submit.innerHTML =
-                                original;
-
-
-                            if (
-                                form.closest(
-                                    ".enquiry-modal"
-                                )
-                            ) {
-
-                                closeEnquiryModal();
-
-                            }
-
-
-                        },
-                        1600
-                    );
-
-
+                if (inPopup) {
+                    closeEnquiryModal();
                 }
-            );
 
+            }, 1600);
+
+        });
+
+    });
+
+
+/* =====================================================
+   CAMPUS VISIT FORM (contact page)
+===================================================== */
+
+(function () {
+
+    const form = document.getElementById("visitForm");
+
+    if (!form) {
+        return;
+    }
+
+    const success = document.getElementById("visitSuccess");
+    const successText = document.getElementById("visitSuccessText");
+    const again = document.getElementById("visitReset");
+    const submit = form.querySelector(".visit-submit");
+
+    form.addEventListener("submit", async event => {
+
+        event.preventDefault();
+
+        if (!form.reportValidity()) {
+            return;
+        }
+
+        const data = new FormData(form);
+        const original = submit.innerHTML;
+        const oldError = form.querySelector(".form-send-error");
+
+        if (oldError) {
+            oldError.remove();
+        }
+
+        submit.disabled = true;
+        submit.innerHTML = "Sending...";
+
+        try {
+
+            // Spam trap filled in: show success and send nothing.
+            if (!data.get("company")) {
+                data.delete("company");
+                await sigmaSendLead("Campus Visit", data);
+            }
+
+        } catch (error) {
+
+            console.error(error);
+            sigmaFormError(form, submit);
+            return;
+
+        } finally {
+
+            submit.disabled = false;
+            submit.innerHTML = original;
 
         }
-    );
+
+        if (successText) {
+            successText.textContent = `Thank you, ${data.get("parent_name")}. Our admissions team will call you on ${data.get("phone")} to confirm the date and time.`;
+        }
+
+        form.hidden = true;
+
+        if (success) {
+            success.hidden = false;
+            success.focus();
+        }
+
+    });
+
+    if (again) {
+
+        again.addEventListener("click", () => {
+
+            form.reset();
+            form.hidden = false;
+
+            if (success) {
+                success.hidden = true;
+            }
+
+        });
+
+    }
+
+})();
 
 
 
