@@ -1030,8 +1030,8 @@ document
         try {
 
             // Spam trap filled in: show success and send nothing.
-            if (!data.get("company")) {
-                data.delete("company");
+            if (!data.get("visit_hp")) {
+                data.delete("visit_hp");
                 await sigmaSendLead("Campus Visit", data);
             }
 
