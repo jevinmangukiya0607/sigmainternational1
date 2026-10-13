@@ -23,7 +23,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Parenting",
         "date": "2026-09-29",
         "author": "SIGMA Admissions Team",
-        "image": "images/RES-01.webp",
+        "image": "images/RES-01.png",
         "tags": ["Residential School", "Boarding School", "Parenting", "Student Development"],
         "readTime": "8 min read"
     },
@@ -34,7 +34,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Parenting",
         "date": "2026-09-24",
         "author": "SIGMA Admissions Team",
-        "image": "images/STU-01.webp",
+        "image": "images/STU-01.png",
         "tags": [
             "Day School",
             "Residential School",
@@ -49,7 +49,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Academics",
         "date": "2026-09-18",
         "author": "SIGMA Academic Team",
-        "image": "images/LAB-01.webp",
+        "image": "images/LAB-01.png",
         "tags": [
             "ASTERIA",
             "CBSE",
@@ -64,7 +64,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Residential Life",
         "date": "2026-09-10",
         "author": "SIGMA Residential Team",
-        "image": "images/RES-02.webp",
+        "image": "images/RES-02.png",
         "tags": [
             "Residential School",
             "Wellbeing",
@@ -79,7 +79,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Admissions",
         "date": "2026-09-02",
         "author": "SIGMA Admissions Team",
-        "image": "images/PPL-05.webp",
+        "image": "images/PPL-05.png",
         "tags": [
             "Admissions",
             "CBSE",
@@ -94,7 +94,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Admissions",
         "date": "2026-08-26",
         "author": "SIGMA Admissions Team",
-        "image": "images/PPL-06.webp",
+        "image": "images/PPL-06.png",
         "tags": [
             "Admissions",
             "Campus Visit",
@@ -109,7 +109,7 @@ window.SIGMA_BLOG_POSTS = [
         "category": "Student Life",
         "date": "2026-08-18",
         "author": "SIGMA Academic Team",
-        "image": "images/STU-05.webp",
+        "image": "images/STU-05.png",
         "tags": [
             "Life Skills",
             "Wellbeing",
